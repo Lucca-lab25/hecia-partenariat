@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: #0d0d1a; color: #e8e8e8; font-size: 13px; line-height: 1.5; padding: 40px 48px; max-width: 900px; margin: 0 auto; }
+.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+.header-left { display: flex; align-items: center; gap: 16px; font-size: 18px; font-weight: 600; color: #e8e8e8; }
+.header-left .sep { color: #444; font-weight: 300; }
+.header-right { text-align: right; font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 0.8px; }
+.header-right strong { display: block; color: #e8e8e8; font-size: 12px; font-weight: 500; letter-spacing: 0; text-transform: none; margin-top: 2px; }
+.badge { display: inline-block; border: 1px solid #333; border-radius: 4px; padding: 3px 10px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; margin-bottom: 20px; }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: 36px; font-style: italic; color: #3b82f6; display: inline; }
+.hero h1 .dash { font-style: normal; color: #e8e8e8; margin: 0 6px; }
+.hero h2 { font-size: 28px; font-weight: 700; color: #e8e8e8; margin-top: 4px; }
+.hero-sub { margin-top: 12px; font-size: 12px; color: #888; }
+.hero-sub .blue { color: #3b82f6; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; font-size: 10px; }
+.hero-meta { display: flex; justify-content: space-between; margin-top: 4px; }
+.hero-meta .right { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 0.8px; text-align: right; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+.info-box { border: 1px solid #222; border-radius: 6px; padding: 14px 16px; background: #111120; }
+.info-box .label { font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px; color: #3b82f6; font-weight: 600; margin-bottom: 6px; }
+.info-box p { font-size: 12px; color: #aaa; line-height: 1.6; }
+.univs { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 16px 0; }
+.univs .label { font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px; color: #3b82f6; font-weight: 600; margin-right: 4px; }
+.univ-tag { border: 1px solid #2a2a3a; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #ccc; background: #111120; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 16px 0; }
+.stat-box { border: 1px solid #222; border-radius: 6px; padding: 16px; text-align: center; background: #111120; }
+.stat-box .big { font-size: 32px; font-weight: 700; color: #e8e8e8; letter-spacing: -1px; line-height: 1; }
+.stat-box .sub { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-top: 4px; }
+.section-title { font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; color: #555; font-weight: 600; margin: 24px 0 12px 0; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
+.price-card { border: 1px solid #222; border-radius: 8px; padding: 16px; background: #111120; }
+.price-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.price-card-header .tier { font-size: 18px; font-weight: 700; }
+.price-card-header .amount { font-size: 13px; font-weight: 600; }
+.gold { border-color: #3a2e00; } .gold .tier, .gold .amount { color: #f0c040; }
+.silver .tier, .silver .amount { color: #aaa; }
+.bronze { border-color: #3a1f00; } .bronze .tier, .bronze .amount { color: #cd7f32; }
+.price-badge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 9px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 10px; }
+.gold .price-badge { background: #2a2000; color: #f0c040; border: 1px solid #3a3000; }
+.silver .price-badge { background: #1e1e2a; color: #aaa; border: 1px solid #333; }
+.bronze .price-badge { background: #1e1000; color: #cd7f32; border: 1px solid #3a2000; }
+.perks { list-style: none; margin-top: 8px; }
+.perks li { font-size: 11.5px; color: #bbb; margin-bottom: 5px; padding-left: 16px; position: relative; }
+.perks li::before { content: "✓"; position: absolute; left: 0; color: #22c55e; font-weight: 600; font-size: 11px; }
+.perks li strong { font-weight: 600; color: #e8e8e8; }
+.gains-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+.gain-box { border: 1px solid #222; border-radius: 6px; padding: 16px; background: #111120; }
+.gain-box h3 { font-size: 13px; font-weight: 600; margin-bottom: 10px; color: #e8e8e8; }
+.gain-item { font-size: 11.5px; color: #888; margin-bottom: 5px; padding-left: 16px; position: relative; }
+.gain-item::before { content: "⇒"; position: absolute; left: 0; color: #444; font-size: 10px; }
+.gain-item strong { font-weight: 600; color: #ccc; }
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
+.step-box { border: 1px solid #222; border-radius: 6px; padding: 14px 16px; background: #111120; }
+.step-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.step-num { font-size: 22px; font-weight: 700; color: #3b82f6; line-height: 1; }
+.step-when { font-size: 9px; text-transform: uppercase; letter-spacing: 0.8px; color: #555; border: 1px solid #222; padding: 2px 7px; border-radius: 3px; }
+.step-box h4 { font-size: 13px; font-weight: 600; margin-bottom: 3px; color: #e8e8e8; }
+.step-box p { font-size: 11px; color: #666; }
+.footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid #1e1e2a; font-size: 11px; }
+.footer .email { color: #555; }
+.footer .cta { color: #3b82f6; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; font-size: 10px; }
+</style>
+</head>
+<body>
+<div class="header"><div class="header-left"><span>HEC</span><span class="sep">|</span><span>PWC</span></div><div class="header-right">TECH PARTNERS<strong>Lovable · ElevenLabs</strong></div></div>
+<div class="badge">HEC IA × PWC</div>
+<div class="hero"><div><h1>Paris AI Hack <span class="dash">—</span> X · HEC · ENS</h1></div><h2>24h Sprint sur le campus HEC Paris</h2><div class="hero-sub"><div class="hero-meta"><div>HEC Paris, 9–10 mai 2026. 9 universités d'élite.<br><span class="blue">Magloire Guillet · Président HEC IA</span></div><div class="right">Proposition de Partenariat · Avril 2026</div></div></div></div>
+<div class="info-grid"><div class="info-box"><div class="label">L'événement</div><p>SprintIAde 24h sur le campus HEC Paris réunissant les meilleures universités françaises. Projets IA construits de A à Z, pitchés devant un jury de professionnels.</p></div><div class="info-box"><div class="label">Organisateur</div><p>HEC IA — 50 membres, 16 consultants IA actifs, 8 écoles partenaires via Unaite. Track record : 2000+ étudiants touchés.</p></div></div>
+<div class="univs"><span class="label">Universités</span><span class="univ-tag">Polytechnique</span><span class="univ-tag">ENS</span><span class="univ-tag">HEC Paris</span><span class="univ-tag">ENSAE</span><span class="univ-tag">Télécom Paris</span><span class="univ-tag">CentraleSupélec</span><span class="univ-tag">ESSEC</span><span class="univ-tag">Sorbonne</span><span class="univ-tag">Mines Paris</span></div>
+<div class="stats"><div class="stat-box"><div class="big">9</div><div class="sub">Universités d'élite</div></div><div class="stat-box"><div class="big">24h</div><div class="sub">Intensif</div></div><div class="stat-box"><div class="big">HEC</div><div class="sub">Paris</div></div><div class="stat-box"><div class="big">9–10</div><div class="sub">Mai</div></div></div>
+<div class="section-title">Formules de Partenariat</div>
+<div class="pricing-grid">
+<div class="price-card gold"><div class="price-card-header"><span class="tier">Gold</span><span class="amount">22 000 € HT</span></div><div class="price-badge">Recommandé</div><ul class="perks"><li><strong>Partenaire principal</strong> — du hackathon</li><li><strong>Track dédié PWC</strong> — thématique co-définie</li><li><strong>Mentorship sur place</strong> — équipe PWC auprès des teams</li><li><strong>Place au jury</strong> — évaluation finale des projets</li><li><strong>Accès CV + projets</strong> — tous les participants</li><li><strong>Branding premium</strong> — supports, scène, communications</li></ul></div>
+<div class="price-card silver"><div class="price-card-header"><span class="tier">Silver</span><span class="amount">17 250 € HT</span></div><div class="price-badge">Partenaire</div><ul class="perks"><li><strong>Track dédié PWC</strong> — thématique co-définie</li><li><strong>Mentorship sur place</strong> — équipe PWC auprès des teams</li><li><strong>Place au jury</strong> — évaluation finale des projets</li><li><strong>Accès CV + projets</strong> — tous les participants</li><li><strong>Branding</strong> — supports et communications</li></ul></div>
+<div class="price-card bronze"><div class="price-card-header"><span class="tier">Bronze</span><span class="amount">11 500 € HT</span></div><div class="price-badge">Visibilité &amp; Talent</div><ul class="perks"><li><strong>Accès CV + projets</strong> — tous les participants</li><li><strong>Branding</strong> — supports et communications</li></ul></div>
+</div>
+<div class="section-title">Ce que PWC gagne</div>
+<div class="gains-grid"><div class="gain-box"><h3>Talent &amp; recrutement</h3><div class="gain-item"><strong>Pipeline IP Paris &amp; top FR</strong> — X, ENS, ENSAE, HEC, ESSEC</div><div class="gain-item"><strong>Évaluation en live</strong> — 24h pour observer les meilleurs builders</div><div class="gain-item"><strong>CV + repos GitHub</strong> — livrés post-événement</div></div><div class="gain-box"><h3>Marque &amp; positionnement</h3><div class="gain-item"><strong>Visibilité campus</strong> — présence sur la scène tech étudiante</div><div class="gain-item"><strong>Employer branding</strong> — auprès des top étudiants IA français</div><div class="gain-item"><strong>Positionnement IA</strong> — PWC associé à l'innovation &amp; IA</div></div></div>
+<div class="section-title">Prochaines étapes</div>
+<div class="steps-grid"><div class="step-box"><div class="step-header"><span class="step-num">01</span><span class="step-when">Semaine prochaine</span></div><h4>Call 15 min</h4><p>Lundi — présentation et choix de formule</p></div><div class="step-box"><div class="step-header"><span class="step-num">02</span><span class="step-when">Jeudi prochain</span></div><h4>Clôture sponsors</h4><p>Deadline de signature partenariat</p></div><div class="step-box"><div class="step-header"><span class="step-num">03</span><span class="step-when">9–10 Mai</span></div><h4>Paris AI Hack</h4><p>Lancement du hackathon sur le campus HEC Paris</p></div></div>
+<div class="footer"><span class="email">magloire.guillet@hec.edu</span><span class="cta">Clôture jeudi — 15 min call lundi ?</span></div>
+</body></html>
